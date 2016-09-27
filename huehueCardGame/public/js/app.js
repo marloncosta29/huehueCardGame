@@ -32,12 +32,15 @@ angular.module('app').controller('perfilController', function ($scope) {
 angular.module('app').controller('socket', function ($scope, $location) {
     var socket = io.connect();
     $scope.users = [];
+    $scope.romms = [];
     $scope.player = null;
     $scope.teste = 'ainda sou texto';
-
+    //players onlines
     socket.on('players', data => {
         $scope.$apply(() => $scope.users = data);
-
+    });
+    socket.on('rooms', data => {
+        $scope.$apply(() => $scope.romms = data);
     });
     socket.on('GameStart', function (data) {
     });

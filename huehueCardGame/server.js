@@ -48,13 +48,10 @@ io.sockets.on("connection", function (socket) {
         PLAYER_LIST[data.challenged.id].isPlaying = true;
         PLAYER_LIST[data.challenger.id].opponent = data.challenged.id;
         PLAYER_LIST[data.challenged.id].opponent = data.challenger.id;
-
+        ROMS_LIST = Game.joinRoom(ROMS_LIST, data);
         data.location = '/game';
 
-        console.log('Dados challenger:')
-        console.log(PLAYER_LIST[data.challenger.id]);
-        console.log('Dados challenged:')
-        console.log(PLAYER_LIST[data.challenged.id]);
+        console.log(data);
 
 
         //console.log(data);
@@ -87,5 +84,6 @@ setInterval(function ()
     {
         var socket = SOCKET_LIST[i];
         socket.emit('players', PLAYER_LIST);
+        socket.emit('rooms', ROMS_LIST);
     }
 }, 10000/25)
