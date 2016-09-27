@@ -1,4 +1,6 @@
-﻿body {
+﻿body 
+{
+    background-color: #000000;
 }
 
 #imgBatleList 
@@ -18,4 +20,9 @@
 #playersOnlineTable
 {
     padding: 15px;
+}
+.userDataDivs
+{
+   font-size: 20pt;
+   padding: 5px;
 }

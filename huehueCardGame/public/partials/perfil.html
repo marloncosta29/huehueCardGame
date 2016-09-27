@@ -4,17 +4,15 @@
     </h1>
     <div class="">
         <div class="col-md-3">
-            <img src="../images/HuehuePerfil.png" class="img-thumbnail" id="huehuePerfil" />
+        <img src="../images/HuehuePerfil.png" class="img-thumbnail" id="huehuePerfil" />
         </div>
-        <div class="col-md-3" id="userData">
-            <ul >
-                <li>Nome : {{ player.nome }}</li>
-                <li>Idade: {{ player.age }}</li>
-                <li>Nivel: {{ player.nivel }}</li>
-                <li>Pt Experiencia{{ player.experience}}</li>
-            </ul>
+        <div class="panel col-md-3" id="userData">
+                <div class="userDataDivs panel-body">Nome : {{ player.nome }}</div>
+                <div class="userDataDivs panel-body">Idade: {{ player.age }}</div>
+                <div class="userDataDivs panel-body">Nivel: {{ player.nivel }}</div>
+                <div class="userDataDivs panel-body">Pt Experiencia: {{ player.experience}}</div>
         </div>
-    
+        <img src="../images/HuehuePerfil.png" class="img-thumbnail" id="huehuePerfil" />
     </div>
     <div class="col-xs-12" id="playersOnlineTable">
         <div class="panel panel-default">
