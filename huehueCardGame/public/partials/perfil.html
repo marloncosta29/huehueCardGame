@@ -8,8 +8,7 @@
         </div>
         <div class="col-md-3" id="userData">
             <ul >
-
-                <li>Nome: {{ player.nome }}</li>
+                <li>Nome : {{ player.nome }}</li>
                 <li>Idade: {{ player.age }}</li>
                 <li>Nivel: {{ player.nivel }}</li>
                 <li>Pt Experiencia{{ player.experience}}</li>
@@ -20,12 +19,13 @@
     <div class="col-xs-12" id="playersOnlineTable">
         <div class="panel panel-default">
             <div class="panel-heading">Usuarios Logados</div>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="usersTable">
                 <tr>
                     <td>Usuario</td>
                     <td>socket</td>
                     <td>idade</td>
                     <td>Online</td>
+                    <td>-</td>
                     <!--<td><img class="img-responsive" id="imgBatleList" src="../images/battle.png" /></td>-->
                 </tr>
 

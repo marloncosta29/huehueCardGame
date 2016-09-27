@@ -46,8 +46,8 @@ io.sockets.on("connection", function (socket) {
         data.challenged.isPlaying = true;
         PLAYER_LIST[data.challenger.id].isPlaying = true;
         PLAYER_LIST[data.challenged.id].isPlaying = true;
-        PLAYER_LIST[data.challenger.id].opponent = data.challenger;
-        PLAYER_LIST[data.challenged.id].opponent = data.challenger;
+        PLAYER_LIST[data.challenger.id].opponent = data.challenged.id;
+        PLAYER_LIST[data.challenged.id].opponent = data.challenger.id;
 
         data.location = '/game';
 
