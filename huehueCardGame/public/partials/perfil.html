@@ -1,0 +1,43 @@
+﻿<div>
+    <h1>
+        here is the perfil Page of {{ player.id }}
+    </h1>
+    <div class="">
+        <div class="col-md-3">
+            <img src="../images/HuehuePerfil.png" class="img-thumbnail" id="huehuePerfil" />
+        </div>
+        <div class="col-md-3" id="userData">
+            <ul >
+
+                <li>Nome: {{ player.nome }}</li>
+                <li>Idade: {{ player.age }}</li>
+                <li>Nivel: {{ player.nivel }}</li>
+                <li>Pt Experiencia{{ player.experience}}</li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="col-xs-12" id="playersOnlineTable">
+        <div class="panel panel-default">
+            <div class="panel-heading">Usuarios Logados</div>
+            <table class="table table-bordered">
+                <tr>
+                    <td>Usuario</td>
+                    <td>socket</td>
+                    <td>idade</td>
+                    <td>Online</td>
+                    <!--<td><img class="img-responsive" id="imgBatleList" src="../images/battle.png" /></td>-->
+                </tr>
+
+                <tr ng-repeat="user in users" ng-show="user.id != playser.id">
+                        <td>{{ user.nome }}</td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.age }}</td>
+                        <td ng-if="user.isPlaying == true">Não</td>
+                        <td ng-if="user.isPlaying == false">Sim</td>
+                        <td><button class="btn" ng-click="toChallenger(user, player)" ng-disabled="playser.isPlaying">Desafiar</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

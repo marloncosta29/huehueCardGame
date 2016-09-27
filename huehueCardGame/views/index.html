@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>HueHueGame</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/stylesSite.css"/>
+</head>
+<body  ng-app="app">
+        <h1>HuehueGame</h1>    
+    
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/perfil">perfil</a></li>
+        <li role="presentation"><a href="/contact">contact</a></li>
+    </ul>
+    <div class="container"  ng-controller="socket">
+        <div ng-view></div>
+    </div>
+
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular-route.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jQuery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+</body>
+</html>

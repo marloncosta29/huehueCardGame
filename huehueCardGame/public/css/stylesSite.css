@@ -1,0 +1,21 @@
+﻿body {
+}
+
+#imgBatleList 
+{
+    max-width:150px;
+    max-height:75px;
+    width: auto;
+    height: auto;
+}
+#huehuePerfil
+{
+    max-width:200px;
+    max-height:200px;
+    width: auto;
+    height: auto;
+}
+#playersOnlineTable
+{
+    padding: 15px;
+}
