@@ -2,6 +2,7 @@
 var express = require("express");
 var app = express();
 var serv = require("http").Server(app);
+var util = require('util')
 
 app.use(express.static(__dirname + "/public"));
 
@@ -40,20 +41,17 @@ io.sockets.on("connection", function (socket) {
 
     socket.on('accept', function (data) {
         console.log('accept event');
-        data.challenger.opponent = data.challenged;
-        data.challenged.opponent = data.challenger;
+        data.challenger.opponent = data.challenged.id;
+        data.challenged.opponent = data.challenger.id;
         data.challenger.isPlaying = true;
         data.challenged.isPlaying = true;
         PLAYER_LIST[data.challenger.id].isPlaying = true;
         PLAYER_LIST[data.challenged.id].isPlaying = true;
-        PLAYER_LIST[data.challenger.id].opponent = data.challenged.id;
-        PLAYER_LIST[data.challenged.id].opponent = data.challenger.id;
-        ROMS_LIST = Game.joinRoom(ROMS_LIST, data);
+        //ROMS_LIST = Game.enterRoom(ROMS_LIST, data);
         data.location = '/game';
 
         console.log(data);
-
-
+        socket.emit('gameStart', data);
         //console.log(data);
         //var room = 'teste';
         //console.log('One : ' + data.challenger.id + ' two: ' + data.challenged.id);

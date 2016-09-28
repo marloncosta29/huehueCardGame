@@ -18,30 +18,26 @@
         <div class="panel panel-default">
             <div class="panel-heading">Usuarios Logados</div>
             <table class="table table-bordered" id="usersTable">
-                <tr>
-                    <td>Usuario</td>
-                    <td>socket</td>
-                    <td>idade</td>
-                    <td>Online</td>
-                    <td>-</td>
-                    <!--<td><img class="img-responsive" id="imgBatleList" src="../images/battle.png" /></td>-->
-                </tr>
-
-                <tr ng-repeat="user in users" ng-show="true">
+                <thead>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>socket</td>
+                        <td>idade</td>
+                        <td>Online</td>
+                        <td>-</td>
+                        <!--<td><img class="img-responsive" id="imgBatleList" src="../images/battle.png" /></td>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users" ng-show="true">
                         <td>{{ user.nome }}</td>
                         <td>{{ user.id }}</td>
                         <td>{{ user.age }}</td>
                         <td ng-if="user.isPlaying == true">Não</td>
                         <td ng-if="user.isPlaying == false">Sim</td>
-                        <td><button class="btn" ng-click="toChallenger(user, player)" ng-disabled="playser.isPlaying">Desafiar</button></td>
-                </tr>
-
-                <tr ng-repeat="room in rooms">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                {{ romms }}
+                        <td><button class="btn" ng-click="toChallenger(user, player)" ng-disabled="user.isPlaying">Desafiar</button></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

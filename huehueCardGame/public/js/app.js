@@ -25,8 +25,8 @@
             .otherwise({ redirectTo: '/' });
 });
 
-angular.module('app').controller('perfilController', function ($scope) {
-       
+angular.module('app').controller('gameController', function ($scope) {
+    
 });
 
 angular.module('app').controller('socket', function ($scope, $location) {
