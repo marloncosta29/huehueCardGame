@@ -39,10 +39,14 @@ angular.module('app').controller('socket', function ($scope, $location) {
     socket.on('players', data => {
         $scope.$apply(() => $scope.users = data);
     });
+
     socket.on('rooms', data => {
         $scope.$apply(() => $scope.romms = data);
     });
-    socket.on('GameStart', function (data) {
+
+    socket.on('gameStart', function (data) {
+        alert(data.location);
+        $location.path(data.location);
     });
 
     socket.on('player', function (data) {

@@ -2,7 +2,7 @@
 var express = require("express");
 var app = express();
 var serv = require("http").Server(app);
-var util = require('util')
+var util = require('util');
 
 app.use(express.static(__dirname + "/public"));
 
@@ -49,9 +49,15 @@ io.sockets.on("connection", function (socket) {
         PLAYER_LIST[data.challenged.id].isPlaying = true;
         //ROMS_LIST = Game.enterRoom(ROMS_LIST, data);
         data.location = '/game';
-
+        var room = '123'
+        SOCKET_LIST[data.challenger.id].join(room);
+        SOCKET_LIST[data.challenged.id].join(room);
         console.log(data);
-        socket.emit('gameStart', data);
+
+        //socket.in(room).emit('gameStart', data);
+        socket.broadcast.to(room).emit('gameStart', data);
+        
+
         //console.log(data);
         //var room = 'teste';
         //console.log('One : ' + data.challenger.id + ' two: ' + data.challenged.id);
@@ -60,9 +66,7 @@ io.sockets.on("connection", function (socket) {
         //console.log(SOCKET_LIST[data.challenger.id]);
         //socket.emit('GameStart', {room : data, location: '/game'});
     })
-
-    // emitir um location, room, 
-    
+        
     socket.on('disconnect', function ()
     {
         PLAYER_LIST = Game.removePlayer(PLAYER_LIST, socket);
