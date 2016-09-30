@@ -70,9 +70,15 @@ angular.module('app').controller('socket', function ($scope, $location) {
         }
     });
 
-    socket.on('GameStart', function (data) {
+    socket.on('teste', function (data) {
+        console.log(data.um);
+    })
+
+    socket.on('gameStart', function (data) {
+        console.log(data);
         $location.path(data.location);
     });
+
     $scope.room = function () {
         alert('entrei no teste');
         socket.on('teste', function (data) {

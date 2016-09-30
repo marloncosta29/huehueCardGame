@@ -4,6 +4,7 @@ var app = express();
 var serv = require("http").Server(app);
 var util = require('util');
 
+//app.use(express.favicon());
 app.use(express.static(__dirname + "/public"));
 
 //Rota fixa para o main
@@ -54,8 +55,11 @@ io.sockets.on("connection", function (socket) {
         SOCKET_LIST[data.challenged.id].join(room);
         console.log(data);
 
-        //socket.in(room).emit('gameStart', data);
-        socket.broadcast.to(room).emit('gameStart', data);
+        setTimeout(function () {
+            console.log("EMITI O GAMESTART");
+            SOCKET_LIST[data.challenged.id].broadcast.to(room).emit('gameStart', data);
+        }, 10000/25);
+        
         
 
         //console.log(data);
@@ -87,5 +91,8 @@ setInterval(function ()
         var socket = SOCKET_LIST[i];
         socket.emit('players', PLAYER_LIST);
         socket.emit('rooms', ROMS_LIST);
+
+        io.to('123').emit('teste', { um: 'um' });
     }
+
 }, 10000/25)

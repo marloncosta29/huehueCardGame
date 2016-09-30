@@ -11,10 +11,16 @@
 }
 #huehuePerfil
 {
-    max-width:200px;
-    max-height:200px;
-    width: auto;
-    height: auto;
+    width:200px;
+    height:200px;
+}
+.headerBlock 
+{
+    
+}
+#userData {
+    width: 500px;
+    margin-left: 0px;
 }
 #playersOnlineTable
 {
@@ -24,6 +30,7 @@
 {
    font-size: 20pt;
    padding: 5px;
+   width: 650px;
 }
 table
 {
@@ -32,4 +39,5 @@ table
 #gamePanel
 {
     border:1px solid #000000;
+
 }
