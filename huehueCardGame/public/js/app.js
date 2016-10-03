@@ -32,8 +32,9 @@ angular.module('app').controller('gameController', function ($scope) {
 angular.module('app').controller('socket', function ($scope, $location) {
     var socket = io.connect();
     $scope.users = [];
-    $scope.romms = [];
+    $scope.rooms = [];
     $scope.player = null;
+    $scope.data = null;
     $scope.teste = 'ainda sou texto';
     //players onlines
     socket.on('players', data => {
@@ -41,12 +42,7 @@ angular.module('app').controller('socket', function ($scope, $location) {
     });
 
     socket.on('rooms', data => {
-        $scope.$apply(() => $scope.romms = data);
-    });
-
-    socket.on('gameStart', function (data) {
-        alert(data.location);
-        $location.path(data.location);
+        $scope.$apply(() => $scope.rooms = data);
     });
 
     socket.on('player', function (data) {
@@ -55,11 +51,11 @@ angular.module('app').controller('socket', function ($scope, $location) {
 
     //Challenger events
     $scope.toChallenger = function (user, player) {
-        socket.emit('toChallenger', { challenger: player, challenged: user, challengeAccepted: false });
+        socket.emit('toChallenger', { id: player.id + "" + user.id, challenger: player, challenged: user, challengeAccepted: false });
     }
    
     socket.on('challenging', function (data) {
-        
+
         if (data.challenged.id === $scope.player.id)
         {
             //alert(data.challenger.id);
@@ -70,19 +66,20 @@ angular.module('app').controller('socket', function ($scope, $location) {
         }
     });
 
-    socket.on('teste', function (data) {
-        console.log(data.um);
-    })
-
     socket.on('gameStart', function (data) {
         console.log(data);
-        $location.path(data.location);
+        console.log(data.challenger.id);
+        console.log(data.challenged.id);
+        console.log(socket.id);
+        if (data.challenged.id === $scope.player.id)
+        {
+            $scope.data = data;
+            $location.path(data.location);
+        }
+        if (data.challenger.id === $scope.player.id)
+        {
+            $scope.data = data;
+            $location.path(data.location);
+        }
     });
-
-    $scope.room = function () {
-        alert('entrei no teste');
-        socket.on('teste', function (data) {
-            alert('TESTE' + data.roomTest);
-        }); 
-    }
 });

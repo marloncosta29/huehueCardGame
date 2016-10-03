@@ -3,9 +3,26 @@ var express = require("express");
 var app = express();
 var serv = require("http").Server(app);
 var util = require('util');
+var favicon = require('serve-favicon');
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var load = require('express-load');
+var mongoose = require('mongoose');
+var flash = require('express-flash');
+var moment = require('moment');
+var expressValidator = require('express-validator');
 
-//app.use(express.favicon());
+
 app.use(express.static(__dirname + "/public"));
+app.use(favicon(__dirname + '/huehueico.png'));
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(expressValidator());
+app.use(cookieParser());
+app.use(flash());
+
 
 //Rota fixa para o main
 app.get('*', function (req, res) {
@@ -28,6 +45,7 @@ var Player = require("./models/Player");
 var Game = require("./models/Game");
 
 var io = require("socket.io")(serv, {});
+
 io.sockets.on("connection", function (socket) {
 
     socket.id = Math.random();
@@ -41,47 +59,40 @@ io.sockets.on("connection", function (socket) {
     });
 
     socket.on('accept', function (data) {
+
         console.log('accept event');
+
         data.challenger.opponent = data.challenged.id;
         data.challenged.opponent = data.challenger.id;
         data.challenger.isPlaying = true;
         data.challenged.isPlaying = true;
         PLAYER_LIST[data.challenger.id].isPlaying = true;
         PLAYER_LIST[data.challenged.id].isPlaying = true;
-        //ROMS_LIST = Game.enterRoom(ROMS_LIST, data);
+        
         data.location = '/game';
         var room = '123'
-        SOCKET_LIST[data.challenger.id].join(room);
-        SOCKET_LIST[data.challenged.id].join(room);
-        console.log(data);
-
-        setTimeout(function () {
-            console.log("EMITI O GAMESTART");
-            SOCKET_LIST[data.challenged.id].broadcast.to(room).emit('gameStart', data);
-        }, 10000/25);
-        
-        
+        socket.join(room);
 
         //console.log(data);
-        //var room = 'teste';
-        //console.log('One : ' + data.challenger.id + ' two: ' + data.challenged.id);
-        //SOCKET_LIST[data.challenger.id].join[room];
-        //SOCKET_LIST[data.challenged.id].join[room];
-        //console.log(SOCKET_LIST[data.challenger.id]);
-        //socket.emit('GameStart', {room : data, location: '/game'});
+        ROMS_LIST[data.id] = data;
+        
+        socket.emit('gameStart', data);
+        socket.broadcast.emit('gameStart', data);
+
     })
         
     socket.on('disconnect', function ()
     {
         PLAYER_LIST = Game.removePlayer(PLAYER_LIST, socket);
     });
-
-    socket.on('joinRoom', function (data)
-    {
-        SOCKET_LIST[socket.id].join(data.room);
-        PLAYER_LIST = Game.joinRoom(PLAYER_LIST, socket.id, data.room);
-    });
 });
+
+function gameStart()
+{
+
+    //io.to(room).emit('gameStart', data);
+}
+
 
 //intervalo de emissão
 setInterval(function ()
@@ -91,8 +102,5 @@ setInterval(function ()
         var socket = SOCKET_LIST[i];
         socket.emit('players', PLAYER_LIST);
         socket.emit('rooms', ROMS_LIST);
-
-        io.to('123').emit('teste', { um: 'um' });
     }
-
 }, 10000/25)

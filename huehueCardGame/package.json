@@ -1,13 +1,28 @@
 {
   "name": "huehue-card-game",
-  "version": "0.0.0",
-  "description": "huehueCardGame",
+  "version": "1.0.0",
+  "description": "Jogo de cartas usando memes",
   "main": "server.js",
-  "author": { "name": "mMarlon" },
-  "dependencies": 
-  {
+  "author": {
+    "name": "Marlon",
+    "emil":  "marlon.29@outlook.com"
+  },
+  "dependencies": {
     "express": "^4.14.0",
     "socket.io": "^1.4.8",
-    "express-handlebars": "*"
+    "express-handlebars": "*",
+    "serve-favicon": "*",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "express-session": "latest",
+    "express-load": "~1.1.14",
+    "mongoose": "~3.8.12",
+    "bcrypt-nodejs": "0.0.3",
+    "moment": "~2.6.0",
+    "express-flash": "0.0.2",
+    "express-validator": "~2.3.0",
+    "nodemailer": "~0.6.5"
   }
 }

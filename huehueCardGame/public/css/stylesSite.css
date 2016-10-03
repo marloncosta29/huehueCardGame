@@ -1,5 +1,8 @@
 ﻿body 
 {
+    background-image: url('../images/backGround.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #imgBatleList 
@@ -11,8 +14,21 @@
 }
 #huehuePerfil
 {
-    width:200px;
-    height:200px;
+    padding-right: 0px;
+    width:160px;
+    height:160px;
+}
+#huehueNivel
+{
+    padding-right: 0px;
+    width:160px;
+    height:160px;
+    border: 1px solid #000000;
+}
+#userHeader
+{
+    background-color: #ffffff;
+    border-radius: 5px;
 }
 .headerBlock 
 {
@@ -21,6 +37,14 @@
 #userData {
     width: 500px;
     margin-left: 0px;
+    margin-right: 7%;
+}
+#perfilData
+{
+    margin-top:2%;
+    background-color: #ffffff;
+    margin-bottom: 0px;
+    border-radius: 5px;
 }
 #playersOnlineTable
 {
@@ -28,9 +52,8 @@
 }
 .userDataDivs
 {
-   font-size: 20pt;
-   padding: 5px;
-   width: 650px;
+   font-size: 17pt;
+   padding: 0px;
 }
 table
 {
