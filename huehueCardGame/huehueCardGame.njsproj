@@ -5,6 +5,8 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>huehueCardGame</Name>
     <RootNamespace>huehueCardGame</RootNamespace>
+    <NodeExePath>C:\Program Files (x86)\nodejs\node.exe</NodeExePath>
+    <NodeExeArguments>"C:\Users\marlo\AppData\Roaming\npm\node_modules\nodemon\bin\nodemon.js" server.js</NodeExeArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -21,7 +23,7 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
-    <StartWebBrowser>true</StartWebBrowser>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +35,7 @@
     <Compile Include="models\Game.js" />
     <Compile Include="models\Player.js" />
     <Compile Include="public\js\app.js" />
+    <Compile Include="public\js\game.js" />
     <Compile Include="public\js\jQuery.js" />
     <Compile Include="public\js\sockets.js" />
     <Compile Include="public\js\perfilController.js" />
@@ -40,6 +43,7 @@
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="public\css\stylesSite.css" />
+    <Content Include="public\partials\cadastro.html" />
     <Content Include="public\partials\game.html" />
     <Content Include="public\partials\home.html" />
     <Content Include="public\partials\contact.html" />
@@ -55,8 +59,19 @@
     <Folder Include="public\images\" />
     <Folder Include="public\partials\" />
     <Folder Include="router\" />
+    <Folder Include="typings\globals\bcrypt-nodejs\" />
+    <Folder Include="typings\globals\body-parser\" />
+    <Folder Include="typings\globals\cookie-parser\" />
+    <Folder Include="typings\globals\debug\" />
     <Folder Include="typings\globals\express-handlebars\" />
+    <Folder Include="typings\globals\express-session\" />
+    <Folder Include="typings\globals\express-validator\" />
     <Folder Include="typings\globals\handlebars\" />
+    <Folder Include="typings\globals\moment\" />
+    <Folder Include="typings\globals\mongoose\" />
+    <Folder Include="typings\globals\morgan\" />
+    <Folder Include="typings\globals\nodemailer\" />
+    <Folder Include="typings\globals\serve-favicon\" />
     <Folder Include="views\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
@@ -66,11 +81,22 @@
     <Folder Include="typings\globals\socket.io\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\bcrypt-nodejs\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\body-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\cookie-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\debug\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\express-handlebars\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express-session\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express-validator\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\express\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\handlebars\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jade\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mongoose\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\morgan\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\nodemailer\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\serve-favicon\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\socket.io\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>

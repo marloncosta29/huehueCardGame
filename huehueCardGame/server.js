@@ -13,6 +13,7 @@ var flash = require('express-flash');
 var moment = require('moment');
 var expressValidator = require('express-validator');
 
+var PubNub = require("pubnub");
 
 app.use(express.static(__dirname + "/public"));
 app.use(favicon(__dirname + '/huehueico.png'));
@@ -45,6 +46,34 @@ var Player = require("./models/Player");
 var Game = require("./models/Game");
 
 var io = require("socket.io")(serv, {});
+
+
+//pubnub = new PubNub({
+//    publishKey: 'pub-c-0821f8c7-f987-4c99-94a8-948bb5698fb5',
+//    subscribeKey: 'sub-c-72002f08-8b2e-11e6-a68c-0619f8945a4f'
+//});
+
+
+//pubnub.subscribe({
+//    channel: 'perfil',
+//    message: 'teste'
+//});
+
+//pubnub.hereNow(
+//    {
+//        channels: ["perfil"],
+//        includeUUIDs: true,
+//        includeState: true
+//    },
+//    function (status, response) {
+//        // handle status, response
+//        console.log('Status: ');
+//        console.log(status);
+//        console.log('Response: ');
+//        console.log(response.channels.perfil.occupants);
+//    }
+//);
+
 
 io.sockets.on("connection", function (socket) {
 
@@ -93,10 +122,36 @@ function gameStart()
     //io.to(room).emit('gameStart', data);
 }
 
-
 //intervalo de emissão
 setInterval(function ()
 {
+
+    //pubnub.publish({
+    //    channel: 'perfil',
+    //    message: PLAYER_LIST,
+    //    callback: function (m) {
+    //        console.log(m)
+    //    }
+    //});
+
+    //pubnub.hereNow(
+    //    {
+    //        channels: ["perfil"],
+    //        includeUUIDs: true,
+    //        includeState: true
+    //    },
+    //    function (status, response) {
+    //        // handle status, response
+    //        console.log('Status: ');
+    //        console.log(status);
+    //        console.log('Response: ');
+    //        console.log(response.channels.perfil.occupants);
+    //    }
+    //);
+
+
+
+
     for (var i in SOCKET_LIST)
     {
         var socket = SOCKET_LIST[i];
